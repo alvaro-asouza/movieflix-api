@@ -9,7 +9,15 @@ const prisma = new PrismaClient();
 // GET, POST, PUT, DELETE, PATCH
 
 app.get("/movies", async (req, res) => {
-    const movies = await prisma.movie.findMany();
+    const movies = await prisma.movie.findMany({
+        orderBy: {
+            title: "asc",
+        },
+        include: {
+            genres: true,
+            languages: true,
+        },
+    });
     res.json(movies);
 });
 
