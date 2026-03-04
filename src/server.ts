@@ -63,7 +63,7 @@ app.put("/movies/:id", async (req, res) => {
     try {
         const movie = await prisma.movie.findUnique({
             where: {
-                id,
+                id
             },
         });
 
@@ -93,9 +93,7 @@ app.delete("/movies/:id", async (req, res) => {
 
     try {
         const movie = await prisma.movie.findUnique({
-            where: {
-                id,
-            },
+            where: { id }
         });
 
         if (!movie) {
